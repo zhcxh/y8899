@@ -30,11 +30,11 @@ jobs:
 
       - name: Clone s workjs
         run: |
-          wget -O 8789.js https://raw.githubusercontent.com/bia-pain-bache/BPB-Worker-Panel/refs/heads/main/build/unobfuscated-worker.js
+          wget -O origin.js https://raw.githubusercontent.com/bia-pain-bache/BPB-Worker-Panel/refs/heads/main/build/unobfuscated-worker.js
 
       - name: Obfuscate s
         run: |
-          javascript-obfuscator 8789.js --output _worker.js \
+          javascript-obfuscator origin.js --output _worker.js \
           --compact true \
           --control-flow-flattening true \
           --control-flow-flattening-threshold 1 \
