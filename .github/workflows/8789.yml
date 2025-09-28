@@ -34,7 +34,8 @@ jobs:
 
       - name: Obfuscate s
         run: |
-          javascript-obfuscator <(curl -sL https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js) \
+          curl -sL https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js \
+          | javascript-obfuscator \
           --output _worker.js \
           --compact true \
           --control-flow-flattening true \
