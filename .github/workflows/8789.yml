@@ -28,15 +28,13 @@ jobs:
         run: |
           npm install -g javascript-obfuscator
 
-      #- name: Clone s workjs
-      #  run: |
-      #    wget -O origin.js https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js
+      - name: Clone s workjs
+        run: |
+          wget -O origin.js https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js
 
       - name: Obfuscate s
         run: |
-          curl -sL https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js \
-          | javascript-obfuscator \
-          --output _worker.js \
+          javascript-obfuscator origin.js --output _worker.js \
           --compact true \
           --control-flow-flattening true \
           --control-flow-flattening-threshold 1 \
@@ -49,6 +47,7 @@ jobs:
           --string-array-threshold 1 \
           --transform-object-keys true \
           --unicode-escape-sequence true
+          rm -f origin.js
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
