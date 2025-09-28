@@ -28,13 +28,13 @@ jobs:
         run: |
           npm install -g javascript-obfuscator
 
-      - name: Clone s workjs
-        run: |
-          wget -O origin.js https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js
+      #- name: Clone s workjs
+      #  run: |
+      #    wget -O origin.js https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js
 
       - name: Obfuscate s
         run: |
-          javascript-obfuscator origin.js --output _worker.js \
+          javascript-obfuscator https://raw.githubusercontent.com/yonggekkk/Cloudflare-vless-trojan/refs/heads/main/Vless_workers_pages/_worker.js --output _worker.js \
           --compact true \
           --control-flow-flattening true \
           --control-flow-flattening-threshold 1 \
